@@ -12,4 +12,3 @@ clap = { version = "4.5.37", features = ["derive"] }
 [features]
 cuda = ["burn-cuda", "burn/cuda"]
 wgpu = ["burn-wgpu", "burn/wgpu"]
-default = ["wgpu"]
