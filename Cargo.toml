@@ -4,5 +4,15 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-burn = { version = "0.17.0", features = ["train", "wgpu", "vision"] }
+burn = { version = "0.17.0", default-features = false, features = [
+    "train",
+    "vision",
+] }
+burn-wgpu = { version = "0.17.0", optional = true }
+burn-cuda = { version = "0.17.0", optional = true }
 clap = { version = "4.5.37", features = ["derive"] }
+
+[features]
+cuda = ["burn-cuda", "burn/cuda"]
+wgpu = ["burn-wgpu", "burn/wgpu"]
+default = ["wgpu"]                # どちらでも OK。好みに合わせて変更
