@@ -1,0 +1,23 @@
+version: '3.3'
+
+services:
+  burn_sample:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      shm_size: '16gb'
+    container_name: burn_sample
+    volumes:
+      - ${PWD}:/burn_sample
+    working_dir: /burn_sample
+    shm_size: '16gb'
+    ports:
+      - "8888:8888"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [ gpu ]
+    tty: true
